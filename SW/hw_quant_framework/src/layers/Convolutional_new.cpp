@@ -597,6 +597,12 @@ void ConvolutionalLayer::computeQuantizedInternal(const LayerData &dataIn, bool 
                         mac_pairs.clear();
                     }
                     
+                    // Progress Indicator
+                    static int progress_cnt = 0;
+                    if (++progress_cnt % 2000 == 0) {
+                        std::cout << "." << std::flush;
+                    }
+                    
                     for (size_t c = 0; c < C; c++)     // For each input channel
                     {
                         for (size_t r = 0; r < R; r++) // For each kernel row
