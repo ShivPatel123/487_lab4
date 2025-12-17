@@ -1,0 +1,316 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon Dec 15 03:00:20 2025
+# Process ID: 51841
+# Current directory: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1
+# Command line: vivado -log staged_mac_bd_axis_subset_converter_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source staged_mac_bd_axis_subset_converter_0_1.tcl
+# Log file: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/staged_mac_bd_axis_subset_converter_0_1.vds
+# Journal file: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/vivado.jou
+#-----------------------------------------------------------
+source staged_mac_bd_axis_subset_converter_0_1.tcl -notrace
+Command: synth_design -top staged_mac_bd_axis_subset_converter_0_1 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 51906
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2371.488 ; gain = 12.848 ; free physical = 5323 ; free virtual = 15896
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/synth/staged_mac_bd_axis_subset_converter_0_1.v:58]
+INFO: [Synth 8-6157] synthesizing module 'top_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/top_staged_mac_bd_axis_subset_converter_0_1.v:60]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000000110011 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
+	Parameter C_M_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000000110011 
+	Parameter C_M_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_DEFAULT_TLAST bound to: 0 - type: integer 
+	Parameter G_INDX_SS_TREADY bound to: 0 - type: integer 
+	Parameter G_INDX_SS_TDATA bound to: 1 - type: integer 
+	Parameter G_INDX_SS_TSTRB bound to: 2 - type: integer 
+	Parameter G_INDX_SS_TKEEP bound to: 3 - type: integer 
+	Parameter G_INDX_SS_TLAST bound to: 4 - type: integer 
+	Parameter G_INDX_SS_TID bound to: 5 - type: integer 
+	Parameter G_INDX_SS_TDEST bound to: 6 - type: integer 
+	Parameter G_INDX_SS_TUSER bound to: 7 - type: integer 
+	Parameter G_MASK_SS_TREADY bound to: 1 - type: integer 
+	Parameter G_MASK_SS_TDATA bound to: 2 - type: integer 
+	Parameter G_MASK_SS_TSTRB bound to: 4 - type: integer 
+	Parameter G_MASK_SS_TKEEP bound to: 8 - type: integer 
+	Parameter G_MASK_SS_TLAST bound to: 16 - type: integer 
+	Parameter G_MASK_SS_TID bound to: 32 - type: integer 
+	Parameter G_MASK_SS_TDEST bound to: 64 - type: integer 
+	Parameter G_MASK_SS_TUSER bound to: 128 - type: integer 
+	Parameter G_TASK_SEVERITY_ERR bound to: 2 - type: integer 
+	Parameter G_TASK_SEVERITY_WARNING bound to: 1 - type: integer 
+	Parameter G_TASK_SEVERITY_INFO bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'axis_subset_converter_v1_1_21_core' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000000110011 
+	Parameter C_M_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000000110011 
+	Parameter C_DEFAULT_TLAST bound to: 0 - type: integer 
+	Parameter G_INDX_SS_TREADY bound to: 0 - type: integer 
+	Parameter G_INDX_SS_TDATA bound to: 1 - type: integer 
+	Parameter G_INDX_SS_TSTRB bound to: 2 - type: integer 
+	Parameter G_INDX_SS_TKEEP bound to: 3 - type: integer 
+	Parameter G_INDX_SS_TLAST bound to: 4 - type: integer 
+	Parameter G_INDX_SS_TID bound to: 5 - type: integer 
+	Parameter G_INDX_SS_TDEST bound to: 6 - type: integer 
+	Parameter G_INDX_SS_TUSER bound to: 7 - type: integer 
+	Parameter G_MASK_SS_TREADY bound to: 1 - type: integer 
+	Parameter G_MASK_SS_TDATA bound to: 2 - type: integer 
+	Parameter G_MASK_SS_TSTRB bound to: 4 - type: integer 
+	Parameter G_MASK_SS_TKEEP bound to: 8 - type: integer 
+	Parameter G_MASK_SS_TLAST bound to: 16 - type: integer 
+	Parameter G_MASK_SS_TID bound to: 32 - type: integer 
+	Parameter G_MASK_SS_TDEST bound to: 64 - type: integer 
+	Parameter G_MASK_SS_TUSER bound to: 128 - type: integer 
+	Parameter G_TASK_SEVERITY_ERR bound to: 2 - type: integer 
+	Parameter G_TASK_SEVERITY_WARNING bound to: 1 - type: integer 
+	Parameter G_TASK_SEVERITY_INFO bound to: 0 - type: integer 
+	Parameter P_SIGNAL_SET_XOR bound to: 32'b00000000000000000000000000000000 
+	Parameter P_SIGNAL_SET_ADD bound to: 32'b00000000000000000000000000000000 
+	Parameter P_SIGNAL_SET_REM bound to: 32'b00000000000000000000000000000000 
+	Parameter P_TLAST_CNTR_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'axis_subset_converter_v1_1_21_core' (1#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'tdata_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tdata_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tdata_staged_mac_bd_axis_subset_converter_0_1' (2#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tdata_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tuser_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tuser_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tuser_staged_mac_bd_axis_subset_converter_0_1' (3#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tuser_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tid_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tid_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TID_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tid_staged_mac_bd_axis_subset_converter_0_1' (4#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tid_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tdest_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tdest_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tdest_staged_mac_bd_axis_subset_converter_0_1' (5#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tdest_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tstrb_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tstrb_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tstrb_staged_mac_bd_axis_subset_converter_0_1' (6#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tstrb_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tkeep_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tkeep_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tkeep_staged_mac_bd_axis_subset_converter_0_1' (7#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tkeep_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tlast_staged_mac_bd_axis_subset_converter_0_1' [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tlast_staged_mac_bd_axis_subset_converter_0_1.v:48]
+	Parameter C_S_AXIS_TID_WIDTH bound to: 8 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tlast_staged_mac_bd_axis_subset_converter_0_1' (8#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/tlast_staged_mac_bd_axis_subset_converter_0_1.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'top_staged_mac_bd_axis_subset_converter_0_1' (9#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/hdl/top_staged_mac_bd_axis_subset_converter_0_1.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'staged_mac_bd_axis_subset_converter_0_1' (10#1) [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/synth/staged_mac_bd_axis_subset_converter_0_1.v:58]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 2416.395 ; gain = 57.754 ; free physical = 5363 ; free virtual = 15937
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2434.207 ; gain = 75.566 ; free physical = 5357 ; free virtual = 15931
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2434.207 ; gain = 75.566 ; free physical = 5357 ; free virtual = 15931
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2434.207 ; gain = 0.000 ; free physical = 5351 ; free virtual = 15924
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/staged_mac_bd_axis_subset_converter_0_1_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.srcs/sources_1/bd/staged_mac_bd/ip/staged_mac_bd_axis_subset_converter_0_1/staged_mac_bd_axis_subset_converter_0_1_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2482.098 ; gain = 0.000 ; free physical = 5269 ; free virtual = 15842
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2482.098 ; gain = 0.000 ; free physical = 5269 ; free virtual = 15842
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2482.098 ; gain = 123.457 ; free physical = 5327 ; free virtual = 15901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2482.098 ; gain = 123.457 ; free physical = 5327 ; free virtual = 15901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2482.098 ; gain = 123.457 ; free physical = 5327 ; free virtual = 15901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2482.098 ; gain = 123.457 ; free physical = 5329 ; free virtual = 15903
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 2482.098 ; gain = 123.457 ; free physical = 5331 ; free virtual = 15908
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2498.098 ; gain = 139.457 ; free physical = 5256 ; free virtual = 15833
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2498.098 ; gain = 139.457 ; free physical = 5256 ; free virtual = 15833
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2517.129 ; gain = 158.488 ; free physical = 5247 ; free virtual = 15824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 2523.066 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 2523.066 ; gain = 116.535 ; free physical = 5249 ; free virtual = 15826
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 2523.074 ; gain = 164.426 ; free physical = 5249 ; free virtual = 15826
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2523.074 ; gain = 0.000 ; free physical = 5249 ; free virtual = 15826
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2531.004 ; gain = 0.000 ; free physical = 5316 ; free virtual = 15893
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+32 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 2537.941 ; gain = 179.359 ; free physical = 5314 ; free virtual = 15891
+INFO: [Common 17-1381] The checkpoint '/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/staged_mac_bd_axis_subset_converter_0_1.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP staged_mac_bd_axis_subset_converter_0_1, cache-ID = 65ad28c2ae2ba20a
+INFO: [Common 17-1381] The checkpoint '/home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.runs/staged_mac_bd_axis_subset_converter_0_1_synth_1/staged_mac_bd_axis_subset_converter_0_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file staged_mac_bd_axis_subset_converter_0_1_utilization_synth.rpt -pb staged_mac_bd_axis_subset_converter_0_1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Dec 15 03:00:58 2025...

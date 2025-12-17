@@ -1,0 +1,1559 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Mon Dec 15 03:02:57 2025
+| Host         : linuxvdi-f25-19.ece.iastate.edu running 64-bit unknown
+| Command      : report_timing_summary -max_paths 10 -file staged_mac_bd_wrapper_timing_summary_routed.rpt -pb staged_mac_bd_wrapper_timing_summary_routed.pb -rpx staged_mac_bd_wrapper_timing_summary_routed.rpx -warn_on_violation
+| Design       : staged_mac_bd_wrapper
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (0)
+6. checking no_output_delay (0)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (0)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (0)
+-------------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      0.349        0.000                      0                 5184        0.046        0.000                      0                 5184        3.750        0.000                       0                  1606  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock       Waveform(ns)       Period(ns)      Frequency(MHz)
+-----       ------------       ----------      --------------
+clk_fpga_0  {0.000 5.000}      10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk_fpga_0          0.349        0.000                      0                 5184        0.046        0.000                      0                 5184        3.750        0.000                       0                  1606  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_0
+  To Clock:  clk_fpga_0
+
+Setup :            0  Failing Endpoints,  Worst Slack        0.349ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.046ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        3.750ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.349ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[30]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.473ns  (logic 4.815ns (50.829%)  route 4.658ns (49.171%))
+  Logic Levels:           14  (CARRY4=8 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.098ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.656ns = ( 12.656 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.229 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    11.229    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5_n_0
+    SLICE_X47Y91         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    11.485 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__6/O[2]
+                         net (fo=2, routed)           0.644    12.128    staged_mac_bd_i/staged_mac_0/inst/next_accum0[30]
+    SLICE_X45Y92         LUT2 (Prop_lut2_I0_O)        0.328    12.456 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[30]_i_1/O
+                         net (fo=1, routed)           0.000    12.456    staged_mac_bd_i/staged_mac_0/inst/C[30]
+    SLICE_X45Y92         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[30]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.477    12.656    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X45Y92         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[30]/C
+                         clock pessimism              0.229    12.885    
+                         clock uncertainty           -0.154    12.731    
+    SLICE_X45Y92         FDRE (Setup_fdre_C_D)        0.075    12.806    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[30]
+  -------------------------------------------------------------------
+                         required time                         12.806    
+                         arrival time                         -12.456    
+  -------------------------------------------------------------------
+                         slack                                  0.349    
+
+Slack (MET) :             0.370ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[28]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.452ns  (logic 4.790ns (50.678%)  route 4.662ns (49.322%))
+  Logic Levels:           14  (CARRY4=8 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.099ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.655ns = ( 12.655 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.229 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    11.229    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5_n_0
+    SLICE_X47Y91         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.235    11.464 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__6/O[0]
+                         net (fo=2, routed)           0.648    12.111    staged_mac_bd_i/staged_mac_0/inst/next_accum0[28]
+    SLICE_X48Y91         LUT2 (Prop_lut2_I0_O)        0.324    12.435 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[28]_i_1/O
+                         net (fo=1, routed)           0.000    12.435    staged_mac_bd_i/staged_mac_0/inst/C[28]
+    SLICE_X48Y91         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[28]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.476    12.655    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y91         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[28]/C
+                         clock pessimism              0.229    12.884    
+                         clock uncertainty           -0.154    12.730    
+    SLICE_X48Y91         FDRE (Setup_fdre_C_D)        0.075    12.805    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[28]
+  -------------------------------------------------------------------
+                         required time                         12.805    
+                         arrival time                         -12.435    
+  -------------------------------------------------------------------
+                         slack                                  0.370    
+
+Slack (MET) :             0.415ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[25]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.361ns  (logic 4.768ns (50.935%)  route 4.593ns (49.065%))
+  Logic Levels:           13  (CARRY4=7 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.348    11.463 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/O[1]
+                         net (fo=2, routed)           0.579    12.041    staged_mac_bd_i/staged_mac_0/inst/next_accum0[25]
+    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.303    12.344 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[25]_i_1/O
+                         net (fo=1, routed)           0.000    12.344    staged_mac_bd_i/staged_mac_0/inst/C[25]
+    SLICE_X48Y89         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[25]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y89         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[25]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y89         FDRE (Setup_fdre_C_D)        0.031    12.760    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[25]
+  -------------------------------------------------------------------
+                         required time                         12.760    
+                         arrival time                         -12.344    
+  -------------------------------------------------------------------
+                         slack                                  0.415    
+
+Slack (MET) :             0.438ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[26]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.383ns  (logic 4.703ns (50.123%)  route 4.680ns (49.877%))
+  Logic Levels:           13  (CARRY4=7 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    11.371 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/O[2]
+                         net (fo=2, routed)           0.666    12.036    staged_mac_bd_i/staged_mac_0/inst/next_accum0[26]
+    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.330    12.366 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[26]_i_1/O
+                         net (fo=1, routed)           0.000    12.366    staged_mac_bd_i/staged_mac_0/inst/C[26]
+    SLICE_X48Y89         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[26]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y89         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[26]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y89         FDRE (Setup_fdre_C_D)        0.075    12.804    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[26]
+  -------------------------------------------------------------------
+                         required time                         12.804    
+                         arrival time                         -12.366    
+  -------------------------------------------------------------------
+                         slack                                  0.438    
+
+Slack (MET) :             0.444ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[27]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.335ns  (logic 4.752ns (50.907%)  route 4.583ns (49.093%))
+  Logic Levels:           13  (CARRY4=7 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.099ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.655ns = ( 12.655 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.329    11.444 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/O[3]
+                         net (fo=2, routed)           0.569    12.012    staged_mac_bd_i/staged_mac_0/inst/next_accum0[27]
+    SLICE_X48Y91         LUT2 (Prop_lut2_I0_O)        0.306    12.318 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[27]_i_1/O
+                         net (fo=1, routed)           0.000    12.318    staged_mac_bd_i/staged_mac_0/inst/C[27]
+    SLICE_X48Y91         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.476    12.655    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y91         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[27]/C
+                         clock pessimism              0.229    12.884    
+                         clock uncertainty           -0.154    12.730    
+    SLICE_X48Y91         FDRE (Setup_fdre_C_D)        0.032    12.762    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[27]
+  -------------------------------------------------------------------
+                         required time                         12.762    
+                         arrival time                         -12.318    
+  -------------------------------------------------------------------
+                         slack                                  0.444    
+
+Slack (MET) :             0.481ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[29]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.295ns  (logic 4.882ns (52.523%)  route 4.413ns (47.477%))
+  Logic Levels:           14  (CARRY4=8 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.098ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.656ns = ( 12.656 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.229 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    11.229    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5_n_0
+    SLICE_X47Y91         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.348    11.577 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__6/O[1]
+                         net (fo=2, routed)           0.399    11.976    staged_mac_bd_i/staged_mac_0/inst/next_accum0[29]
+    SLICE_X45Y92         LUT2 (Prop_lut2_I0_O)        0.303    12.279 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[29]_i_1/O
+                         net (fo=1, routed)           0.000    12.279    staged_mac_bd_i/staged_mac_0/inst/C[29]
+    SLICE_X45Y92         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[29]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.477    12.656    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X45Y92         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[29]/C
+                         clock pessimism              0.229    12.885    
+                         clock uncertainty           -0.154    12.731    
+    SLICE_X45Y92         FDRE (Setup_fdre_C_D)        0.029    12.760    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[29]
+  -------------------------------------------------------------------
+                         required time                         12.760    
+                         arrival time                         -12.279    
+  -------------------------------------------------------------------
+                         slack                                  0.481    
+
+Slack (MET) :             0.483ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[24]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.338ns  (logic 4.676ns (50.076%)  route 4.662ns (49.924%))
+  Logic Levels:           13  (CARRY4=7 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.235    11.350 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/O[0]
+                         net (fo=2, routed)           0.648    11.997    staged_mac_bd_i/staged_mac_0/inst/next_accum0[24]
+    SLICE_X48Y90         LUT2 (Prop_lut2_I0_O)        0.324    12.321 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[24]_i_1/O
+                         net (fo=1, routed)           0.000    12.321    staged_mac_bd_i/staged_mac_0/inst/C[24]
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[24]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[24]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y90         FDRE (Setup_fdre_C_D)        0.075    12.804    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[24]
+  -------------------------------------------------------------------
+                         required time                         12.804    
+                         arrival time                         -12.321    
+  -------------------------------------------------------------------
+                         slack                                  0.483    
+
+Slack (MET) :             0.546ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[23]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.232ns  (logic 4.638ns (50.239%)  route 4.594ns (49.761%))
+  Logic Levels:           12  (CARRY4=6 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.329    11.330 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/O[3]
+                         net (fo=2, routed)           0.580    11.909    staged_mac_bd_i/staged_mac_0/inst/next_accum0[23]
+    SLICE_X48Y90         LUT2 (Prop_lut2_I0_O)        0.306    12.215 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[23]_i_1/O
+                         net (fo=1, routed)           0.000    12.215    staged_mac_bd_i/staged_mac_0/inst/C[23]
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[23]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y90         FDRE (Setup_fdre_C_D)        0.032    12.761    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[23]
+  -------------------------------------------------------------------
+                         required time                         12.761    
+                         arrival time                         -12.215    
+  -------------------------------------------------------------------
+                         slack                                  0.546    
+
+Slack (MET) :             0.554ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[22]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.266ns  (logic 4.589ns (49.525%)  route 4.677ns (50.475%))
+  Logic Levels:           12  (CARRY4=6 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    11.257 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/O[2]
+                         net (fo=2, routed)           0.663    11.920    staged_mac_bd_i/staged_mac_0/inst/next_accum0[22]
+    SLICE_X48Y90         LUT2 (Prop_lut2_I0_O)        0.330    12.250 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[22]_i_1/O
+                         net (fo=1, routed)           0.000    12.250    staged_mac_bd_i/staged_mac_0/inst/C[22]
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[22]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y90         FDRE (Setup_fdre_C_D)        0.075    12.804    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[22]
+  -------------------------------------------------------------------
+                         required time                         12.804    
+                         arrival time                         -12.250    
+  -------------------------------------------------------------------
+                         slack                                  0.554    
+
+Slack (MET) :             0.570ns  (required time - arrival time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[31]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk_fpga_0 rise@10.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        9.206ns  (logic 4.866ns (52.856%)  route 4.340ns (47.144%))
+  Logic Levels:           14  (CARRY4=8 LUT2=3 LUT3=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.100ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.654ns = ( 12.654 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.983ns
+    Clock Pessimism Removal (CPR):    0.229ns
+  Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.300ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.193     1.193    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     1.294 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.689     2.983    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+  -------------------------------------------------------------------    -------------------
+    RAMB36_X2Y17         RAMB36E1 (Prop_ramb36e1_CLKBWRCLK_DOBDO[10])
+                                                      0.882     3.865 f  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DOBDO[10]
+                         net (fo=16, routed)          1.172     5.037    staged_mac_bd_i/staged_mac_0/inst/SD_AXIS_TDATA[10]
+    SLICE_X33Y76         LUT2 (Prop_lut2_I0_O)        0.124     5.161 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12/O
+                         net (fo=1, routed)           0.849     6.011    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_12_n_0
+    SLICE_X45Y84         LUT6 (Prop_lut6_I3_O)        0.124     6.135 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     6.135    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_i_8_n_0
+    SLICE_X45Y84         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     6.682 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0/O[2]
+                         net (fo=2, routed)           0.610     7.292    staged_mac_bd_i/staged_mac_0/inst/mac_product__0_carry__0_n_5
+    SLICE_X44Y84         LUT3 (Prop_lut3_I2_O)        0.295     7.587 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4/O
+                         net (fo=2, routed)           0.813     8.399    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_4_n_0
+    SLICE_X44Y85         LUT4 (Prop_lut4_I3_O)        0.332     8.731 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8/O
+                         net (fo=1, routed)           0.000     8.731    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_i_8_n_0
+    SLICE_X44Y85         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.263 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     9.263    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__0_n_0
+    SLICE_X44Y86         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.377 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     9.377    staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__1_n_0
+    SLICE_X44Y87         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     9.599 r  staged_mac_bd_i/staged_mac_0/inst/mac_product__86_carry__2/O[0]
+                         net (fo=4, routed)           0.570    10.170    staged_mac_bd_i/staged_mac_0/inst/mac_product[15]
+    SLICE_X47Y88         LUT2 (Prop_lut2_I0_O)        0.299    10.469 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5/O
+                         net (fo=1, routed)           0.000    10.469    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_i_5_n_0
+    SLICE_X47Y88         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.001 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    11.001    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__3_n_0
+    SLICE_X47Y89         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.115 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    11.115    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__4_n_0
+    SLICE_X47Y90         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.229 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    11.229    staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__5_n_0
+    SLICE_X47Y91         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.329    11.558 r  staged_mac_bd_i/staged_mac_0/inst/next_accum0_carry__6/O[3]
+                         net (fo=2, routed)           0.326    11.884    staged_mac_bd_i/staged_mac_0/inst/next_accum0[31]
+    SLICE_X48Y90         LUT2 (Prop_lut2_I0_O)        0.306    12.190 r  staged_mac_bd_i/staged_mac_0/inst/accumulator[31]_i_1/O
+                         net (fo=1, routed)           0.000    12.190    staged_mac_bd_i/staged_mac_0/inst/C[31]
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[31]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                     10.000    10.000 r  
+    PS7_X0Y0             PS7                          0.000    10.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.088    11.088    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.179 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        1.475    12.654    staged_mac_bd_i/staged_mac_0/inst/ACLK
+    SLICE_X48Y90         FDRE                                         r  staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[31]/C
+                         clock pessimism              0.229    12.883    
+                         clock uncertainty           -0.154    12.729    
+    SLICE_X48Y90         FDRE (Setup_fdre_C_D)        0.031    12.760    staged_mac_bd_i/staged_mac_0/inst/accumulator_reg[31]
+  -------------------------------------------------------------------
+                         required time                         12.760    
+                         arrival time                         -12.190    
+  -------------------------------------------------------------------
+                         slack                                  0.570    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.046ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[10]
+                            (rising edge-triggered cell PS7 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.270ns  (logic 0.141ns (52.263%)  route 0.129ns (47.737%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.224ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.251ns
+    Source Clock Delay      (SCD):    0.992ns
+    Clock Pessimism Removal (CPR):    0.035ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.656     0.992    staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aclk
+    SLICE_X27Y100        FDRE                                         r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X27Y100        FDRE (Prop_fdre_C_Q)         0.141     1.133 r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[12]/Q
+                         net (fo=1, routed)           0.129     1.262    staged_mac_bd_i/processing_system7_0/inst/M_AXI_GP0_BID[10]
+    PS7_X0Y0             PS7                                          r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[10]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.885     1.251    staged_mac_bd_i/processing_system7_0/inst/M_AXI_GP0_ACLK
+    PS7_X0Y0             PS7                                          r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0ACLK
+                         clock pessimism             -0.035     1.216    
+    PS7_X0Y0             PS7 (Hold_ps7_MAXIGP0ACLK_MAXIGP0BID[10])
+                                                      0.000     1.216    staged_mac_bd_i/processing_system7_0/inst/PS7_i
+  -------------------------------------------------------------------
+                         required time                         -1.216    
+                         arrival time                           1.262    
+  -------------------------------------------------------------------
+                         slack                                  0.046    
+
+Slack (MET) :             0.046ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[8]
+                            (rising edge-triggered cell PS7 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.270ns  (logic 0.141ns (52.263%)  route 0.129ns (47.737%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.224ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.251ns
+    Source Clock Delay      (SCD):    0.992ns
+    Clock Pessimism Removal (CPR):    0.035ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.656     0.992    staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/aclk
+    SLICE_X27Y100        FDRE                                         r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X27Y100        FDRE (Prop_fdre_C_Q)         0.141     1.133 r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/b.b_pipe/m_payload_i_reg[10]/Q
+                         net (fo=1, routed)           0.129     1.262    staged_mac_bd_i/processing_system7_0/inst/M_AXI_GP0_BID[8]
+    PS7_X0Y0             PS7                                          r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0BID[8]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.885     1.251    staged_mac_bd_i/processing_system7_0/inst/M_AXI_GP0_ACLK
+    PS7_X0Y0             PS7                                          r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/MAXIGP0ACLK
+                         clock pessimism             -0.035     1.216    
+    PS7_X0Y0             PS7 (Hold_ps7_MAXIGP0ACLK_MAXIGP0BID[8])
+                                                      0.000     1.216    staged_mac_bd_i/processing_system7_0/inst/PS7_i
+  -------------------------------------------------------------------
+                         required time                         -1.216    
+                         arrival time                           1.262    
+  -------------------------------------------------------------------
+                         slack                                  0.046    
+
+Slack (MET) :             0.061ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.gmm2s.wr_data_int_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DIADI[2]
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.416ns  (logic 0.141ns (33.899%)  route 0.275ns (66.101%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.058ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.231ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.281ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/s_axi_aclk
+    SLICE_X33Y89         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.gmm2s.wr_data_int_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X33Y89         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.gmm2s.wr_data_int_reg[2]/Q
+                         net (fo=1, routed)           0.275     1.308    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/dina[2]
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/DIADI[2]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.865     1.231    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/clka
+    RAMB36_X2Y17         RAMB36E1                                     r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKARDCLK
+                         clock pessimism             -0.281     0.950    
+    RAMB36_X2Y17         RAMB36E1 (Hold_ramb36e1_CLKARDCLK_DIADI[2])
+                                                      0.296     1.246    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0
+  -------------------------------------------------------------------
+                         required time                         -1.246    
+                         arrival time                           1.308    
+  -------------------------------------------------------------------
+                         slack                                  0.061    
+
+Slack (MET) :             0.072ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.fg_rxd_wr_length_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/RAMA/I
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.232ns  (logic 0.141ns (60.705%)  route 0.091ns (39.295%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.186ns
+    Source Clock Delay      (SCD):    0.889ns
+    Clock Pessimism Removal (CPR):    0.284ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.553     0.889    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/s_axi_aclk
+    SLICE_X39Y87         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.fg_rxd_wr_length_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y87         FDRE (Prop_fdre_C_Q)         0.141     1.030 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.fg_rxd_wr_length_reg[0]/Q
+                         net (fo=10, routed)          0.091     1.121    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/DIA
+    SLICE_X38Y87         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.820     1.186    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/WCLK
+    SLICE_X38Y87         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/RAMA/CLK
+                         clock pessimism             -0.284     0.902    
+    SLICE_X38Y87         RAMD64E (Hold_ramd64e_CLK_I)
+                                                      0.147     1.049    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_0_2/RAMA
+  -------------------------------------------------------------------
+                         required time                         -1.049    
+                         arrival time                           1.121    
+  -------------------------------------------------------------------
+                         slack                                  0.072    
+
+Slack (MET) :             0.086ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIF/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][8]_srl32/D
+                            (rising edge-triggered cell SRLC32E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.247ns  (logic 0.128ns (51.839%)  route 0.119ns (48.161%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.031ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.187ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.264ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIF/I_SLAVE_ATTACHMENT/s_axi_aclk
+    SLICE_X35Y88         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIF/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y88         FDRE (Prop_fdre_C_Q)         0.128     1.020 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIF/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[8]/Q
+                         net (fo=1, routed)           0.119     1.139    staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/in[8]
+    SLICE_X32Y87         SRLC32E                                      r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][8]_srl32/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.821     1.187    staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/aclk
+    SLICE_X32Y87         SRLC32E                                      r  staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][8]_srl32/CLK
+                         clock pessimism             -0.264     0.923    
+    SLICE_X32Y87         SRLC32E (Hold_srlc32e_CLK_D)
+                                                      0.130     1.053    staged_mac_bd_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][8]_srl32
+  -------------------------------------------------------------------
+                         required time                         -1.053    
+                         arrival time                           1.139    
+  -------------------------------------------------------------------
+                         slack                                  0.086    
+
+Slack (MET) :             0.086ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMA/WADR2
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.356ns  (logic 0.141ns (39.569%)  route 0.215ns (60.431%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.190ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.282ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/wr_clk
+    SLICE_X41Y95         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y95         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/Q
+                         net (fo=334, routed)         0.215     1.248    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/ADDRD2
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMA/WADR2
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.824     1.190    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/WCLK
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMA/CLK
+                         clock pessimism             -0.282     0.908    
+    SLICE_X42Y94         RAMD64E (Hold_ramd64e_CLK_WADR2)
+                                                      0.254     1.162    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMA
+  -------------------------------------------------------------------
+                         required time                         -1.162    
+                         arrival time                           1.248    
+  -------------------------------------------------------------------
+                         slack                                  0.086    
+
+Slack (MET) :             0.086ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMB/WADR2
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.356ns  (logic 0.141ns (39.569%)  route 0.215ns (60.431%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.190ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.282ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/wr_clk
+    SLICE_X41Y95         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y95         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/Q
+                         net (fo=334, routed)         0.215     1.248    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/ADDRD2
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMB/WADR2
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.824     1.190    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/WCLK
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMB/CLK
+                         clock pessimism             -0.282     0.908    
+    SLICE_X42Y94         RAMD64E (Hold_ramd64e_CLK_WADR2)
+                                                      0.254     1.162    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMB
+  -------------------------------------------------------------------
+                         required time                         -1.162    
+                         arrival time                           1.248    
+  -------------------------------------------------------------------
+                         slack                                  0.086    
+
+Slack (MET) :             0.086ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMC/WADR2
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.356ns  (logic 0.141ns (39.569%)  route 0.215ns (60.431%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.190ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.282ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/wr_clk
+    SLICE_X41Y95         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y95         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/Q
+                         net (fo=334, routed)         0.215     1.248    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/ADDRD2
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMC/WADR2
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.824     1.190    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/WCLK
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMC/CLK
+                         clock pessimism             -0.282     0.908    
+    SLICE_X42Y94         RAMD64E (Hold_ramd64e_CLK_WADR2)
+                                                      0.254     1.162    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMC
+  -------------------------------------------------------------------
+                         required time                         -1.162    
+                         arrival time                           1.248    
+  -------------------------------------------------------------------
+                         slack                                  0.086    
+
+Slack (MET) :             0.086ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMD/WADR2
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.356ns  (logic 0.141ns (39.569%)  route 0.215ns (60.431%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.190ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.282ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/wr_clk
+    SLICE_X41Y95         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y95         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/Q
+                         net (fo=334, routed)         0.215     1.248    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/ADDRD2
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMD/WADR2
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.824     1.190    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/WCLK
+    SLICE_X42Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMD/CLK
+                         clock pessimism             -0.282     0.908    
+    SLICE_X42Y94         RAMD64E (Hold_ramd64e_CLK_WADR2)
+                                                      0.254     1.162    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_18_20/RAMD
+  -------------------------------------------------------------------
+                         required time                         -1.162    
+                         arrival time                           1.248    
+  -------------------------------------------------------------------
+                         slack                                  0.086    
+
+Slack (MET) :             0.094ns  (arrival time - required time)
+  Source:                 staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/RAMA/WADR2
+                            (rising edge-triggered cell RAMD64E clocked by clk_fpga_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.382ns  (logic 0.141ns (36.916%)  route 0.241ns (63.084%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.034ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.190ns
+    Source Clock Delay      (SCD):    0.892ns
+    Clock Pessimism Removal (CPR):    0.264ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.310     0.310    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.336 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.556     0.892    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/wr_clk
+    SLICE_X41Y95         FDRE                                         r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y95         FDRE (Prop_fdre_C_Q)         0.141     1.033 r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/wrp_inst/count_value_i_reg[2]/Q
+                         net (fo=334, routed)         0.241     1.274    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/ADDRD2
+    SLICE_X38Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/RAMA/WADR2
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.337     0.337    staged_mac_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     0.366 r  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=1606, routed)        0.824     1.190    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/WCLK
+    SLICE_X38Y94         RAMD64E                                      r  staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/RAMA/CLK
+                         clock pessimism             -0.264     0.926    
+    SLICE_X38Y94         RAMD64E (Hold_ramd64e_CLK_WADR2)
+                                                      0.254     1.180    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_256_319_15_17/RAMA
+  -------------------------------------------------------------------
+                         required time                         -1.180    
+                         arrival time                           1.274    
+  -------------------------------------------------------------------
+                         slack                                  0.094    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_fpga_0
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { staged_mac_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0] }
+
+Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB18_X2Y32    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_3/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB18_X2Y32    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_3/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB36_X3Y18    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_1/CLKARDCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X3Y18    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_1/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB36_X3Y17    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKARDCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X3Y17    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB36_X2Y17    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKARDCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X2Y17    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/gtxd.COMP_TXD_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_0/CLKBWRCLK
+Min Period        n/a     BUFG/I              n/a            2.155         10.000      7.845      BUFGCTRL_X0Y16  staged_mac_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/I
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X43Y94    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/IP2Bus_Error_reg/C
+Low Pulse Width   Fast    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X42Y95    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_128_191_18_20/RAMD/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X46Y87    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_6_8/RAMA/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y91    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_9_11/RAMA/CLK
+Low Pulse Width   Fast    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y91    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_9_11/RAMA/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X46Y87    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_6_8/RAMB/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X46Y87    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_6_8/RAMC/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X46Y87    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_6_8/RAMD/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y88    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_9_11/RAMA/CLK
+Low Pulse Width   Fast    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y88    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_9_11/RAMA/CLK
+Low Pulse Width   Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y88    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_64_127_9_11/RAMB/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_128_191_3_5/RAMA/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_128_191_3_5/RAMB/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_128_191_3_5/RAMC/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X34Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_128_191_3_5/RAMD/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X42Y86    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_6_8/RAMA/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X42Y86    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_6_8/RAMB/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X42Y86    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_6_8/RAMC/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X42Y86    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_320_383_6_8/RAMD/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X36Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_192_255_0_2/RAMA/CLK
+High Pulse Width  Slow    RAMD64E/CLK         n/a            1.250         5.000       3.750      SLICE_X36Y84    staged_mac_bd_i/axi_fifo_mm_s_0/U0/COMP_IPIC2AXI_S/grxd.COMP_rx_len_fifo/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_192_255_0_2/RAMB/CLK
+
+
+

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon Dec  8 04:20:18 2025
+# Process ID: 195057
+# Current directory: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado
+# Command line: wbtcv -mode batch -source /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.hw/webtalk/labtool_webtalk.tcl -notrace
+# Log file: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/webtalk.log
+# Journal file: /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/webtalk.jou
+#-----------------------------------------------------------
+source /home/shivansh/cpre_4870/lab3/20250930_CPRE_Lab3/HW/cpre487-587-lab3-main/simple_interface/vivado/simple_interface/simple_interface.hw/webtalk/labtool_webtalk.tcl -notrace
