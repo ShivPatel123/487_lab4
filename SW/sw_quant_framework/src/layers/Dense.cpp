@@ -380,7 +380,8 @@ namespace ML
             }
 
             const DenseCalibrationStats &input_stats = input_stats_it->second;
-            Si = input_stats.Si;
+            // Fix: JSON provides Scale, code expects Inverse Scale
+            Si = 1.0f / input_stats.Si;
             zi = input_stats.zi;
             calibration_mode = "_input";
 

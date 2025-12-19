@@ -16,7 +16,6 @@ class FlattenLayer : public Layer {
     virtual void computeTiled(const LayerData& dataIn) const override;
     virtual void computeSIMD(const LayerData& dataIn) const override;
     virtual void computeQuantized(const LayerData& dataIn) const override;
-    virtual void computeAccelerated(const LayerData& dataIn) const override;
 };
 
 }  // namespace ML

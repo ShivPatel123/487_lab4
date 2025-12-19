@@ -364,6 +364,13 @@ namespace ML
             
             const DenseCalibrationStats& input_stats = input_stats_it->second;
             Si = input_stats.Si;
+            
+            // COMPATIBILITY FIX: Detect "Standard" Stats (Si < 1.0) vs "Legacy" Stats (Si > 1.0)
+            if (Si < 1.0f && Si > 1e-9f) {
+                logDebug("Detected Standard Calibration Stats (Si < 1.0). Inverting Si to use as Multiplier.");
+                Si = 1.0f / Si;
+            }
+            
             zi = input_stats.zi;
             calibration_mode = "_input";
             

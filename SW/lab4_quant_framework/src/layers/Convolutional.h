@@ -43,6 +43,8 @@ class ConvolutionalLayer : public Layer {
     virtual void computeAccelerated(const LayerData& dataIn) const override;
 
    private:
+    void computeQuantizedInternal(const LayerData& dataIn, bool use_hardware) const;
+
     LayerParams weightParam;
     LayerData weightData;
 
@@ -55,5 +57,6 @@ void resetConvLayerCounter();
 int getCurrentConvLayerCount();
 bool isLayerSpecificCalibrationEnabled();
 void setCalibrationMode(bool use_layer_specific);
+void setLayerPrecision(const std::string& layer_name, int bits);
 
 }  // namespace ML

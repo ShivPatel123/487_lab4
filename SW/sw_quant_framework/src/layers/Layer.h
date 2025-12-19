@@ -262,14 +262,14 @@ inline void LayerData::saveData(Path filePath) {
     // Open our file and check for issues
 #ifdef ZEDBOARD
     FIL file;
-    if (f_open(&file, params.filePath.c_str(), FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) { // Open our file on the SD card
+    if (f_open(&file, filePath.c_str(), FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) { // Open our file on the SD card
 #else
-    std::ofstream file(params.filePath, std::ios::binary);  // Create and open our file
+    std::ofstream file(filePath, std::ios::binary);  // Create and open our file
     if (file.is_open()) {
 #endif
-        std::cout << "Opened binary file " << params.filePath << std::endl;
+        std::cout << "Opened binary file " << filePath << std::endl;
     } else {
-        throw std::runtime_error("Failed to open binary file: " + params.filePath);
+        throw std::runtime_error("Failed to open binary file: " + filePath);
     }
 
 #ifdef ZEDBOARD

@@ -627,12 +627,20 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
 
     // Run full inference on the model using QUANTIZED mode
     timer.start();
-    const LayerData& final_output = model.inference(img, Layer::InfType::QUANTIZED);
+    LayerData final_output = model.inference(img, Layer::InfType::QUANTIZED);
     timer.stop();
+    // Save output for visualization
+    try {
+        Path outPath = basePath / "image_0_data" / "model_quantized_output.bin";
+        const_cast<LayerData&>(final_output).saveData(outPath);
+        std::cout << "Saved quantized output to " << outPath << std::endl;
+    } catch (...) {
+        std::cout << "Warning: Failed to save output binary." << std::endl;
+    }
 
     // Compare against the final layer output (layer 12 Softmax)
     try {
-        LayerData expected(model.getOutputLayer().getOutputParams(), basePath / "image_0_data" / "layer_12_output_regen.bin");
+        LayerData expected(model.getOutputLayer().getOutputParams(), basePath / "image_0_data" / "layer_12_output.bin");
         expected.loadData();
         
         std::cout << "QUANTIZED (Softmax) vs EXPECTED:" << std::endl; 

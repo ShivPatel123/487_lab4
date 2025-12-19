@@ -66,9 +66,4 @@ namespace ML
         std::memcpy(output.raw(), dataIn.raw(), inputElements * sizeof(fp32));
     }
 
-    void FlattenLayer::computeAccelerated(const LayerData& dataIn) const {
-        // Flattening is just memory copy, no acceleration needed
-        computeNaive(dataIn);
-    }
-
-} // namespace ML
+}

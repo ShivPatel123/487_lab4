@@ -43,6 +43,8 @@ class DenseLayer : public Layer {
     virtual void computeAccelerated(const LayerData& dataIn) const override;
 
    private:
+    void computeQuantizedInternal(const LayerData& dataIn, bool use_hardware) const;
+
     LayerParams weightParam;
     LayerData weightData;
 

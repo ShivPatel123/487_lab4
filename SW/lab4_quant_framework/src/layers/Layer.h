@@ -186,7 +186,9 @@ class Layer {
     virtual void computeTiled(const LayerData& dataIn) const = 0;
     virtual void computeSIMD(const LayerData& dataIn) const = 0;
     virtual void computeQuantized(const LayerData& dataIn) const = 0;
-    virtual void computeAccelerated(const LayerData& dataIn) const = 0;
+    virtual void computeAccelerated(const LayerData& dataIn) const {
+        computeQuantized(dataIn);
+    }
 
    protected:
     // Quantization scales and zero points

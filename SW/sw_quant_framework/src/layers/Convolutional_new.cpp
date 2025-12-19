@@ -347,10 +347,10 @@ namespace ML
         {
             // Try different possible paths for the calibration file
             std::vector<std::string> possible_paths = {
+                "calibration_stats.json",
+                "data/calibration_stats.json",
                 "calibration_stats_regen.json",
                 "data/calibration_stats_regen.json",
-                "data/calibration_stats.json",
-                "calibration_stats.json",
                 "../../../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
                 "../../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
                 "../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
@@ -541,7 +541,8 @@ namespace ML
         // 3.2: Use PRE-CALCULATED INPUT SCALE (Si) and ZERO POINT (zi)
         // -------------------------
         // These come directly from calibration_stats.json
-        fp32 Si = input_stats.Si;
+        // Fix: JSON provides Scale (e.g. 0.0039), but code expects Inverse Scale (e.g. 255)
+        fp32 Si = 1.0f / input_stats.Si;
         i8 zi = input_stats.zi;
 
         logDebug("Using calibrated input scale Si = " + std::to_string(Si) +

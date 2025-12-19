@@ -266,10 +266,4 @@ namespace ML
     // ==========================================================================
 }
 
-    void MaxPoolingLayer::computeAccelerated(const LayerData& dataIn) const {
-        // MaxPool acceleration not implemented in hardware yet
-        // Fallback to naive implementation (FP32) which works with dequantized outputs
-        computeNaive(dataIn);
-    }
-
-} // namespace ML
+}

@@ -23,9 +23,6 @@ EXE_DEBUG = $(BIN)/ml_debug
 	CC_LINUX = g++ 
 	CC_WIN = x86_64-w64-mingw32-g++ -static-libgcc -static-libstdc++ -fstack-protector
 	CC_ALL = -Wall -Werror -pedantic -std=c++11
-ifdef QUANTIZE_BITS
-	CC_ALL += -DQUANTIZE=$(QUANTIZE_BITS)
-endif
 	CC_DEBUG = -g -Og
 	CC_OPT_FLAGS = -O3
 	CC_SIMD_FLAGS = -march=native
@@ -34,7 +31,6 @@ endif
 
 # Libs
 # CC_FLAGS_END += -pthread -lfmt
-# CC_FLAGS_END += -pthread
 CC_FLAGS_END += -pthread -lstdc++
 
 #	Check if GCC is version 9 or greater, and if not, include an additional flag for the filesystem lib

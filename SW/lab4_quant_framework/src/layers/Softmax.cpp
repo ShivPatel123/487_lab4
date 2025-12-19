@@ -75,9 +75,4 @@ void SoftmaxLayer::computeQuantized(const LayerData& dataIn) const {
     computeNaive(dataIn);
 }
 
-    void SoftmaxLayer::computeAccelerated(const LayerData& dataIn) const {
-        // Softmax acceleration not implemented in hardware yet
-        computeNaive(dataIn);
-    }
-
-} // namespace ML
+}

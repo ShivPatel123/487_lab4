@@ -11,94 +11,52 @@
 #include "../Types.h"
 #include "../Utils.h"
 #include "Layer.h"
+#include "../HardwareMac.h"
 
-#ifdef ZEDBOARD
-#include "xil_io.h"
-#include "xparameters.h"
-
-// Define FIFO offsets if not already defined (as per Lab 3 manual)
-#ifndef XLLF_TDFD_OFFSET
-#define XLLF_TDFD_OFFSET 0x00000010
-#endif
-#ifndef XLLF_TLF_OFFSET
-#define XLLF_TLF_OFFSET 0x00000014
-#endif
-#ifndef XLLF_RDFO_OFFSET
-#define XLLF_RDFO_OFFSET 0x0000001C
-#endif
-#ifndef XLLF_RDFD_OFFSET
-#define XLLF_RDFD_OFFSET 0x00000020
-#endif
-#ifndef XIL_RLF_OFFSET
-#define XIL_RLF_OFFSET 0x00000024
-#endif
-
-#ifndef XPAR_AXI_FIFO_0_BASEADDR
-#define XPAR_AXI_FIFO_0_BASEADDR 0x43C00000 // Default or placeholder
-#endif
-#define FIFO_BASE_ADDR XPAR_AXI_FIFO_0_BASEADDR
-#endif
+namespace {
+inline uint16_t packMacOperands(ML::i8 weight, ML::i8 activation) {
+    return (static_cast<uint16_t>(static_cast<uint8_t>(weight)) << 8) |
+           static_cast<uint16_t>(static_cast<uint8_t>(activation));
+}
+}
 
 namespace ML
 {
-// Include QUANTIZE definition from Config.h or ML.cpp
-#ifndef QUANTIZE
-#define QUANTIZE 8  // Default to 8-bit if not defined
-#endif
-
-// Quantization bit-width configuration
-#if QUANTIZE == 2
-    #define QUANT_MIN -2
-    #define QUANT_MAX 1
-    #define QUANT_LEVELS 4
-#elif QUANTIZE == 4
-    #define QUANT_MIN -8
-    #define QUANT_MAX 7
-    #define QUANT_LEVELS 16
-#elif QUANTIZE == 8
-    #define QUANT_MIN -128
-    #define QUANT_MAX 127
-    #define QUANT_LEVELS 256
-#else
-    #error "QUANTIZE must be 2, 4, or 8"
-#endif
-
     // ==========================================================================
     // CALIBRATION STATISTICS STRUCTURE
     // ==========================================================================
-    struct CalibrationStats
-    {
+    struct CalibrationStats {
         fp32 min, max, mean, Si;
         i8 zi;
     };
-
+    
     // Global calibration data loaded from JSON
     static std::map<std::string, CalibrationStats> calibration_data;
     static bool calibration_loaded = false;
-
+    
     // Layer counter for automatic naming
     static int conv_layer_count = 0;
-
+    
     // Mode flag to determine how to select calibration stats
-    static bool use_layer_specific_calibration = false;
+    static bool use_layer_specific_calibration = false; 
 
+    // Variable Precision Map (LayerName -> BitWidth)
+    static std::map<std::string, int> layer_precisions;
+    
     // ==========================================================================
     // SIMPLE JSON PARSER FOR CALIBRATION STATS
     // ==========================================================================
-    static bool readFileToString(const std::string &path, std::string &content)
-    {
+    static bool readFileToString(const std::string& path, std::string& content) {
 #ifdef ZEDBOARD
         logInfo("Checking calibration path: " + path);
 
         std::string normalized = path;
-        if (normalized.rfind("0:/", 0) != 0)
-        {
+        if (normalized.rfind("0:/", 0) != 0) {
             normalized = "0:/" + normalized;
         }
 
         FILINFO info;
-        if (f_stat(normalized.c_str(), &info) != FR_OK)
-        {
+        if (f_stat(normalized.c_str(), &info) != FR_OK) {
             logError("f_stat failed for calibration file: " + normalized);
             return false;
         }
@@ -107,22 +65,18 @@ namespace ML
         LayerParams tmp_params(1, {file_size}, normalized);
         LayerData tmp_data(tmp_params, normalized);
         tmp_data.allocData();
-        try
-        {
+        try {
             tmp_data.loadData();
-        }
-        catch (const std::exception &e)
-        {
+        } catch (const std::exception& e) {
             logError("LayerData::loadData failed for calibration file: " + normalized + " (" + e.what() + ")");
             return false;
         }
 
-        content.assign(static_cast<const char *>(tmp_data.raw()), file_size);
+        content.assign(static_cast<const char*>(tmp_data.raw()), file_size);
         return true;
 #else
         std::ifstream file(path);
-        if (!file.is_open())
-        {
+        if (!file.is_open()) {
             return false;
         }
         std::ostringstream ss;
@@ -132,109 +86,92 @@ namespace ML
 #endif
     }
 
-    bool loadCalibrationStats(const std::string &json_path)
-    {
-        if (calibration_loaded)
-            return true;
-
+    bool loadCalibrationStats(const std::string& json_path) {
+        if (calibration_loaded) return true;
+        
         std::string content;
-        if (!readFileToString(json_path, content))
-        {
+        if (!readFileToString(json_path, content)) {
             logError("Failed to open calibration stats file: " + json_path);
             return false;
         }
-
+        
         // Simple JSON parsing - look for layer entries
         size_t pos = 0;
-        while ((pos = content.find("\"", pos)) != std::string::npos)
-        {
+        while ((pos = content.find("\"", pos)) != std::string::npos) {
             size_t name_start = pos + 1;
             size_t name_end = content.find("\"", name_start);
-            if (name_end == std::string::npos)
-                break;
-
+            if (name_end == std::string::npos) break;
+            
             std::string layer_name = content.substr(name_start, name_end - name_start);
             pos = name_end + 1;
-
+            
             // Skip to the opening brace
             size_t brace_start = content.find("{", pos);
-            if (brace_start == std::string::npos)
-                break;
-
+            if (brace_start == std::string::npos) break;
+            
             // Find the closing brace
             size_t brace_end = content.find("}", brace_start);
-            if (brace_end == std::string::npos)
-                break;
-
+            if (brace_end == std::string::npos) break;
+            
             std::string layer_content = content.substr(brace_start + 1, brace_end - brace_start - 1);
-
+            
             // Parse the values
             CalibrationStats stats = {};
-
+            
             // Extract min
             size_t min_pos = layer_content.find("\"min\":");
-            if (min_pos != std::string::npos)
-            {
+            if (min_pos != std::string::npos) {
                 size_t val_start = layer_content.find(":", min_pos) + 1;
                 size_t val_end = layer_content.find(",", val_start);
-                if (val_end == std::string::npos)
-                    val_end = layer_content.find("}", val_start);
+                if (val_end == std::string::npos) val_end = layer_content.find("}", val_start);
                 stats.min = std::stof(layer_content.substr(val_start, val_end - val_start));
             }
-
-            // Extract max
+            
+            // Extract max  
             size_t max_pos = layer_content.find("\"max\":");
-            if (max_pos != std::string::npos)
-            {
+            if (max_pos != std::string::npos) {
                 size_t val_start = layer_content.find(":", max_pos) + 1;
                 size_t val_end = layer_content.find(",", val_start);
-                if (val_end == std::string::npos)
-                    val_end = layer_content.find("}", val_start);
+                if (val_end == std::string::npos) val_end = layer_content.find("}", val_start);
                 stats.max = std::stof(layer_content.substr(val_start, val_end - val_start));
             }
-
+            
             // Extract mean
             size_t mean_pos = layer_content.find("\"mean\":");
-            if (mean_pos != std::string::npos)
-            {
+            if (mean_pos != std::string::npos) {
                 size_t val_start = layer_content.find(":", mean_pos) + 1;
                 size_t val_end = layer_content.find(",", val_start);
-                if (val_end == std::string::npos)
-                    val_end = layer_content.find("}", val_start);
+                if (val_end == std::string::npos) val_end = layer_content.find("}", val_start);
                 stats.mean = std::stof(layer_content.substr(val_start, val_end - val_start));
             }
-
+            
             // Extract Si
             size_t si_pos = layer_content.find("\"Si\":");
-            if (si_pos != std::string::npos)
-            {
+            if (si_pos != std::string::npos) {
                 size_t val_start = layer_content.find(":", si_pos) + 1;
                 size_t val_end = layer_content.find(",", val_start);
-                if (val_end == std::string::npos)
-                    val_end = layer_content.find("}", val_start);
+                if (val_end == std::string::npos) val_end = layer_content.find("}", val_start);
                 stats.Si = std::stof(layer_content.substr(val_start, val_end - val_start));
             }
-
+            
             // Extract zi
             size_t zi_pos = layer_content.find("\"zi\":");
-            if (zi_pos != std::string::npos)
-            {
+            if (zi_pos != std::string::npos) {
                 size_t val_start = layer_content.find(":", zi_pos) + 1;
                 size_t val_end = layer_content.find(",", val_start);
-                if (val_end == std::string::npos)
-                    val_end = layer_content.find("}", val_start);
+                if (val_end == std::string::npos) val_end = layer_content.find("}", val_start);
                 stats.zi = static_cast<i8>(std::stoi(layer_content.substr(val_start, val_end - val_start)));
             }
-
+            
             calibration_data[layer_name] = stats;
             pos = brace_end + 1;
         }
-
+        
         calibration_loaded = true;
         logInfo("Loaded calibration stats from " + json_path + " for " + std::to_string(calibration_data.size()) + " layers");
         return true;
     }
-
+    
     // ==========================================================================
     // CALIBRATION STATE MANAGEMENT
     // --------------------------------------------------------------------------
@@ -256,15 +193,19 @@ namespace ML
     //  - getCurrentConvLayerCount()  : returns current conv_layer_count
     //  - enableLayerSpecificCalibration(enable) : convenience wrapper to set mode
     //  - isLayerSpecificCalibrationEnabled()    : query current mode
+    //  - setLayerPrecision(layer, bits)         : set target bitwidth for a layer
     // ==========================================================================
-    void resetCalibrationState()
-    {
+    void resetCalibrationState() {
         conv_layer_count = 0;
-        logInfo("Reset calibration state: conv_layer_count = 0");
+        // logInfo("Reset calibration state: conv_layer_count = 0");
     }
 
-    void setCalibrationMode(bool use_layer_specific)
-    {
+    void setLayerPrecision(const std::string& layer_name, int bits) {
+        layer_precisions[layer_name] = bits;
+        // logInfo("Set precision for " + layer_name + ": " + std::to_string(bits) + "-bit");
+    }
+
+    void setCalibrationMode(bool use_layer_specific) {
         use_layer_specific_calibration = use_layer_specific;
         resetCalibrationState();
         logInfo("Set calibration mode: " + std::string(use_layer_specific ? "layer-specific" : "individual-tests"));
@@ -276,7 +217,7 @@ namespace ML
     // This is your working Lab 2 implementation
     // It performs convolution using 32-bit floating point (fp32) arithmetic
     // ==========================================================================
-
+    
     void ConvolutionalLayer::computeNaive(const LayerData &dataIn) const
     {
         // Get layer dimensions from parameters
@@ -287,8 +228,8 @@ namespace ML
         size_t U = 1; // Stride (how many pixels we move the kernel each step)
 
         // Input dimensions
-        size_t W = inputDims[1]; // Input width
-        size_t C = inputDims[2]; // Input channels (e.g., 3 for RGB)
+        size_t W = inputDims[1];  // Input width
+        size_t C = inputDims[2];  // Input channels (e.g., 3 for RGB)
 
         // Output dimensions
         size_t P = outputDims[0]; // Output height
@@ -300,17 +241,17 @@ namespace ML
         size_t S = weightDims[1]; // Kernel width
 
         // Triple nested loop over output positions and channels
-        for (size_t p = 0; p < P; p++) // For each output row
+        for (size_t p = 0; p < P; p++)         // For each output row
         {
-            for (size_t q = 0; q < Q; q++) // For each output column
+            for (size_t q = 0; q < Q; q++)     // For each output column
             {
                 for (size_t m = 0; m < M; m++) // For each output channel
                 {
                     fp32 result = 0.0f; // Accumulator for this output position
-
+                    
                     // Perform the convolution sum
                     // Formula: o[p][q][m] = sum_{c,r,s} i[U*p+r][U*q+s][c] * f[r][s][c][m] + b[m]
-                    for (size_t c = 0; c < C; c++) // For each input channel
+                    for (size_t c = 0; c < C; c++)     // For each input channel
                     {
                         for (size_t r = 0; r < R; r++) // For each kernel row
                         {
@@ -319,15 +260,15 @@ namespace ML
                                 // Calculate input coordinates for this kernel position
                                 size_t input_h = U * p + r; // Input height position
                                 size_t input_w = U * q + s; // Input width position
-
+                                
                                 // Calculate flat array index for input
                                 // 3D array [H][W][C] flattened to 1D
                                 size_t input_idx = input_h * W * C + input_w * C + c;
-
+                                
                                 // Calculate flat array index for weight
                                 // 4D array [R][S][C][M] flattened to 1D
                                 size_t weight_idx = r * S * C * M + s * C * M + c * M + m;
-
+                                
                                 // Multiply-Accumulate operation (MAC)
                                 // This is the core operation we're accelerating in hardware
                                 result += dataIn.get<fp32>(input_idx) *
@@ -335,14 +276,14 @@ namespace ML
                             }
                         }
                     }
-
+                    
                     // Add bias term for this output channel
                     result += getBiasData().get<fp32>(m);
-
+                    
                     // Apply ReLU activation: max(0, x)
                     // This introduces non-linearity into the network
                     result = std::max(0.0f, result);
-
+                    
                     // Calculate output index and store result
                     size_t output_idx = p * Q * M + q * M + m;
                     getOutputData().get<fp32>(output_idx) = result;
@@ -354,7 +295,7 @@ namespace ML
     // ==========================================================================
     // PLACEHOLDER IMPLEMENTATIONS (Not modified for this lab)
     // ==========================================================================
-
+    
     void ConvolutionalLayer::computeThreaded(const LayerData &dataIn) const
     {
         // For simplicity, use naive implementation
@@ -384,57 +325,49 @@ namespace ML
     // WHY? Hardware can compute int8 multiplications ~4x faster and with
     // ~16x less energy than fp32 multiplications!
     // ==========================================================================
+    
+void ConvolutionalLayer::computeQuantized(const LayerData &dataIn) const {
+    computeQuantizedInternal(dataIn, false);
+}
 
-    void ConvolutionalLayer::computeQuantized(const LayerData &dataIn) const
-    {
-        // ==========================================================================
-        // SECTION 1: LOAD CALIBRATION STATS AND IDENTIFY CURRENT LAYER
-        // ==========================================================================
+void ConvolutionalLayer::computeAccelerated(const LayerData &dataIn) const {
+    computeQuantizedInternal(dataIn, true);
+}
 
+void ConvolutionalLayer::computeQuantizedInternal(const LayerData &dataIn, bool use_hardware) const {
+        // ==========================================================================
+        // SECTION 1: LOAD CALIBRATION STATS AND IDENTIFY CURRENT LAYER  
+        // ==========================================================================
+        
         // Load calibration statistics if not already loaded
-        if (!calibration_loaded)
-        {
-            // Select calibration file based on quantization bit-width
-            std::string cal_filename;
-            #if QUANTIZE == 2
-                cal_filename = "calibration_stats_int2.json";
-            #elif QUANTIZE == 4
-                cal_filename = "calibration_stats_int4.json";
-            #elif QUANTIZE == 8
-                cal_filename = "calibration_stats.json";
-            #endif
-
+        if (!calibration_loaded) {
             // Try different possible paths for the calibration file
             std::vector<std::string> possible_paths = {
-                cal_filename,
-                "data/" + cal_filename,
-                "calibration_stats_regen.json",
-                "data/calibration_stats_regen.json",
-                "../../../SW/Lab3/Phase_I_Calibration/" + cal_filename,
-                "../../SW/Lab3/Phase_I_Calibration/" + cal_filename,
-                "../SW/Lab3/Phase_I_Calibration/" + cal_filename,
-                "SW/Lab3/Phase_I_Calibration/" + cal_filename};
-
+                "data/calibration_stats.json",
+                "calibration_stats.json",
+                "../../../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
+                "../../SW/Lab3/Phase_I_Calibration/calibration_stats.json", 
+                "../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
+                "SW/Lab3/Phase_I_Calibration/calibration_stats.json"
+            };
+            
             bool found = false;
-            for (const auto &path : possible_paths)
-            {
+            for (const auto& path : possible_paths) {
                 logInfo("Attempting to load calibration file: " + path);
-                if (loadCalibrationStats(path))
-                {
+                if (loadCalibrationStats(path)) {
                     found = true;
                     break;
                 }
             }
-
-            if (!found)
-            {
+            
+            if (!found) {
                 logError("Could not find calibration_stats.json file");
                 logInfo("Falling back to runtime quantization parameter calculation");
                 // Fall back to the original implementation would go here
                 return;
             }
         }
-
+        
         // ==========================================================================
         // SECTION 2: GET DIMENSIONS (Moved up by BibidhB to make variables available)
         // ==========================================================================
@@ -451,6 +384,19 @@ namespace ML
         size_t R = weightDims[0];
         size_t S = weightDims[1];
 
+#if defined(ZEDBOARD)
+        const bool hardware_enabled = use_hardware;
+#else
+        const bool hardware_enabled = false;
+#endif
+
+        std::vector<uint16_t> mac_pairs;
+#if defined(ZEDBOARD)
+        if (hardware_enabled) {
+            mac_pairs.reserve(R * S * C);
+        }
+#endif
+        
         // ==========================================================================
         // ADAPTIVE INPUT CALIBRATION SELECTION FOR CONVOLUTIONAL LAYERS
         // ==========================================================================
@@ -470,36 +416,27 @@ namespace ML
         // Note: conv_layer_count can be reset via resetCalibrationState()/resetConvLayerCounter()
         // and mode toggled with setCalibrationMode()/enableLayerSpecificCalibration().
         // ==========================================================================
-
+        
         std::string input_stats_name;
 
         // Check if this is an individual layer test (always start with raw image)
         // vs full inference chain (layer gets previous layer's output)
         bool is_individual_layer_test = !use_layer_specific_calibration;
 
-        if (is_individual_layer_test)
-        {
+        if (is_individual_layer_test) {
             // Individual layer test mode: all layers get raw image input
             input_stats_name = "_input";
             // Don't increment counter for individual tests
-        }
-        else
-        {
+        } else {
             // Full inference chain mode: use layer-specific calibration
-            if (conv_layer_count == 0)
-            {
+            if (conv_layer_count == 0) {
                 input_stats_name = "_input";
-            }
-            else if (conv_layer_count <= 5)
-            { // Only 6 conv layers exist (0-5)
+            } else if (conv_layer_count <= 5) {  // Only 6 conv layers exist (0-5)
                 input_stats_name = "conv2d";
-                if (conv_layer_count > 1)
-                {
+                if (conv_layer_count > 1) {
                     input_stats_name += "_" + std::to_string(conv_layer_count - 1);
                 }
-            }
-            else
-            {
+            } else {
                 //  Reasoning:
                 //  Downstream layers (fully-connected, pooling, activations, normalization, etc.)
                 //    commonly consume the outputs produced by the last convolutional layer.
@@ -510,162 +447,164 @@ namespace ML
                 //  Using the last conv calibration is a conservative fallback that prevents
                 //    uncalibrated layers from causing quantization/scale mismatches or incorrect
                 //    numeric behavior.
-                input_stats_name = "conv2d_5"; // Use conv2d_5 for any layer beyond
+                input_stats_name = "conv2d_5";  // Use conv2d_5 for any layer beyond
                 logInfo("Layer beyond conv range, using fallback calibration: conv2d_5");
             }
             // Increment counter for next layer in chain
             conv_layer_count++;
         }
-
+        
         // Identify current layer for logging purposes only
         std::string current_layer_name;
-        if (P == 60 && Q == 60 && M == 32)
-        {
-            current_layer_name = "conv2d"; // Conv1 is conv2d
-        }
-        else if (P == 56 && Q == 56 && M == 32)
-        {
-            current_layer_name = "conv2d_1"; // Conv2 is conv2d_1
-        }
-        else if (P == 26 && Q == 26 && M == 64)
-        {
-            current_layer_name = "conv2d_2"; // Conv3 is conv2d_2
-        }
-        else if (P == 24 && Q == 24 && M == 64)
-        {
-            current_layer_name = "conv2d_3"; // Conv4 is conv2d_3
-        }
-        else if (P == 10 && Q == 10 && M == 64)
-        {
-            current_layer_name = "conv2d_4"; // Conv5 is conv2d_4 (FIXED!)
-        }
-        else if (P == 8 && Q == 8 && M == 128)
-        {
-            current_layer_name = "conv2d_5"; // Conv6 is conv2d_5 (Added by BibidhB to match layer dims)
-        }
-        else
-        {
+        if (P == 60 && Q == 60 && M == 32) {
+            current_layer_name = "conv2d";       // Conv1 is conv2d
+        } else if (P == 56 && Q == 56 && M == 32) {
+            current_layer_name = "conv2d_1";     // Conv2 is conv2d_1
+        } else if (P == 26 && Q == 26 && M == 64) {
+            current_layer_name = "conv2d_2";     // Conv3 is conv2d_2
+        } else if (P == 24 && Q == 24 && M == 64) {
+            current_layer_name = "conv2d_3";     // Conv4 is conv2d_3
+        } else if (P == 10 && Q == 10 && M == 64) {
+            current_layer_name = "conv2d_4";     // Conv5 is conv2d_4 (FIXED!)
+        } else if (P == 8 && Q == 8 && M == 128) {
+            current_layer_name = "conv2d_5";     // Conv6 is conv2d_5 (Added by BibidhB to match layer dims)
+        } else {
             current_layer_name = "unknown_layer";
         }
-
+                
         // Find the input calibration stats (always use "_input" for individual layer tests)
         auto input_stats_it = calibration_data.find(input_stats_name);
-        if (input_stats_it == calibration_data.end())
-        {
+        if (input_stats_it == calibration_data.end()) {
             logError("No calibration stats found for input data: " + input_stats_name);
             logError("Available layers in calibration data:");
-            for (const auto &pair : calibration_data)
-            {
+            for (const auto& pair : calibration_data) {
                 logError("  - " + pair.first);
             }
             return;
         }
-
-        const CalibrationStats &input_stats = input_stats_it->second;
-
-        logInfo("Processing layer: " + current_layer_name + " (dims: " +
+        
+        const CalibrationStats& input_stats = input_stats_it->second;
+        
+        logInfo("Processing layer: " + current_layer_name + " (dims: " + 
                 std::to_string(P) + "x" + std::to_string(Q) + "x" + std::to_string(M) + ")");
-        logInfo("Using calibration stats: " + input_stats_name + " - Si=" + std::to_string(input_stats.Si) +
+        logInfo("Using calibration stats: " + input_stats_name + " - Si=" + std::to_string(input_stats.Si) + 
                 ", zi=" + std::to_string(static_cast<int>(input_stats.zi)));
-
+        
+            
         // ==========================================================================
         // SECTION 3: USE PRE-CALCULATED QUANTIZATION PARAMETERS
         // ==========================================================================
-
+        
         // -------------------------
         // 3.1: Calculate WEIGHT SCALE (Sw) - Still calculated at runtime
         // -------------------------
         // We still calculate this because weight ranges can vary significantly
         size_t weight_size = getWeightParams().flat_count();
         fp32 max_weight = 0.0f;
-
-        for (size_t i = 0; i < weight_size; i++)
-        {
+        
+        for (size_t i = 0; i < weight_size; i++) {
             fp32 abs_val = std::abs(getWeightData().get<fp32>(i));
-            if (abs_val > max_weight)
-            {
+            if (abs_val > max_weight) {
                 max_weight = abs_val;
             }
         }
-
-        if (max_weight < 1e-8f)
-        {
+        
+        if (max_weight < 1e-8f) {
             max_weight = 1.0f;
         }
-
-        fp32 Sw = static_cast<fp32>(QUANT_MAX) / max_weight;
-        logDebug("Weight scale Sw = " + std::to_string(Sw) + " (max_weight = " + std::to_string(max_weight) + ")");
-
+        
+        fp32 Sw = 127.0f / max_weight;
+        // logDebug("Weight scale Sw = " + std::to_string(Sw) + " (max_weight = " + std::to_string(max_weight) + ")");
+        
         // -------------------------
         // 3.2: Use PRE-CALCULATED INPUT SCALE (Si) and ZERO POINT (zi)
         // -------------------------
         // These come directly from calibration_stats.json
         fp32 Si = input_stats.Si;
         i8 zi = input_stats.zi;
-
-        logDebug("Using calibrated input scale Si = " + std::to_string(Si) +
-                 ", zero point zi = " + std::to_string(static_cast<int>(zi)));
-
+        
+        // logDebug("Using calibrated input scale Si = " + std::to_string(Si) + 
+        //         ", zero point zi = " + std::to_string(static_cast<int>(zi)));
+        
         // -------------------------
         // 3.3: Calculate BIAS SCALE (Sb)
         // -------------------------
         fp32 Sb = Si * Sw;
-        logDebug("Bias scale Sb = " + std::to_string(Sb));
-
+        // logDebug("Bias scale Sb = " + std::to_string(Sb));
+        
         // ==========================================================================
         // SECTION 4: QUANTIZE ALL INPUTS (BEFORE CONVOLUTION LOOPS)
         // ==========================================================================
         // Formula: ix = round(Si * Ix) + zi
         // Using pre-calculated Si and zi from calibration stats
         // ==========================================================================
-
+        
         size_t input_size = getInputParams().flat_count();
         std::vector<i8> quantized_input(input_size);
-
-        for (size_t i = 0; i < input_size; i++)
-        {
+        
+        for (size_t i = 0; i < input_size; i++) {
             i32 temp = static_cast<i32>(std::round(Si * dataIn.get<fp32>(i))) + zi;
-            quantized_input[i] =
-                static_cast<i8>(std::max<i32>(QUANT_MIN, std::min<i32>(QUANT_MAX, temp)));
+            // Standard 8-bit clamp
+            i32 val = std::max<i32>(-128, std::min<i32>(127, temp));
+
+            // Variable Precision Simulation
+            if (layer_precisions.count(current_layer_name)) {
+                int bits = layer_precisions[current_layer_name];
+                if (bits == 4) {
+                    val = std::max<i32>(-8, std::min<i32>(7, val));
+                } else if (bits == 2) {
+                    val = std::max<i32>(-2, std::min<i32>(1, val));
+                }
+            }
+            quantized_input[i] = static_cast<i8>(val);
         }
-
-        logDebug("Quantized " + std::to_string(input_size) + " input values to int8");
-
+        
+        // logDebug("Quantized " + std::to_string(input_size) + " input values to int8");
+        
         // ==========================================================================
         // SECTION 5: QUANTIZE ALL WEIGHTS (BEFORE CONVOLUTION LOOPS)
         // ==========================================================================
         // Formula: wx = round(Sw * Wx)
         // Note: No zero point for weights (symmetric quantization)
         // ==========================================================================
-
+        
         std::vector<i8> quantized_weights(weight_size);
-
-        for (size_t i = 0; i < weight_size; i++)
-        {
+        
+        for (size_t i = 0; i < weight_size; i++) {
             i32 temp = static_cast<i32>(std::round(Sw * getWeightData().get<fp32>(i)));
-            quantized_weights[i] =
-                static_cast<i8>(std::max<i32>(QUANT_MIN, std::min<i32>(QUANT_MAX, temp)));
+            // Standard 8-bit clamp
+            i32 val = std::max<i32>(-128, std::min<i32>(127, temp));
+
+            // Variable Precision Simulation
+            if (layer_precisions.count(current_layer_name)) {
+                int bits = layer_precisions[current_layer_name];
+                if (bits == 4) {
+                    val = std::max<i32>(-8, std::min<i32>(7, val));
+                } else if (bits == 2) {
+                    val = std::max<i32>(-2, std::min<i32>(1, val));
+                }
+            }
+            quantized_weights[i] = static_cast<i8>(val);
         }
-
-        logDebug("Quantized " + std::to_string(weight_size) + " weight values to int8");
-
+        
+        // logDebug("Quantized " + std::to_string(weight_size) + " weight values to int8");
+        
         // ==========================================================================
         // SECTION 6: QUANTIZE ALL BIASES (BEFORE CONVOLUTION LOOPS)
         // ==========================================================================
         // Formula: bx = round(Sb * Bx)
         // Note: Biases are int32 (not int8) because they're added to accumulated sums
         // ==========================================================================
-
+        
         size_t bias_size = M; // One bias per output channel
         std::vector<i32> quantized_biases(bias_size);
-
-        for (size_t m = 0; m < M; m++)
-        {
+        
+        for (size_t m = 0; m < M; m++) {
             quantized_biases[m] = static_cast<i32>(std::round(Sb * getBiasData().get<fp32>(m)));
         }
-
-        logDebug("Quantized " + std::to_string(bias_size) + " bias values to int32");
-
+        
+        // logDebug("Quantized " + std::to_string(bias_size) + " bias values to int32");
+        
         // ==========================================================================
         // SECTION 7: MAIN CONVOLUTION LOOP (SAME STRUCTURE AS LAB 2!)
         // ==========================================================================
@@ -674,61 +613,60 @@ namespace ML
         //   2. Accumulator is int32 instead of fp32
         //   3. We dequantize at the end to get fp32 output
         // ==========================================================================
-
-        logDebug("Starting convolution loops...");
-
+        
+        // logDebug("Starting convolution loops...");
+        
         // Triple nested loop over output positions (SAME as Lab 2)
-        for (size_t p = 0; p < P; p++) // For each output row
+        for (size_t p = 0; p < P; p++)         // For each output row
         {
-            for (size_t q = 0; q < Q; q++) // For each output column
+            for (size_t q = 0; q < Q; q++)     // For each output column
             {
                 for (size_t m = 0; m < M; m++) // For each output channel
                 {
-                    // Initialize accumulator with QUANTIZED bias
-                    // In Lab 2: we started with fp32 bias
-                    // In Lab 3: we start with int32 quantized bias
                     i32 accumulator = quantized_biases[m];
-
-                    // Perform convolution sum (SAME structure as Lab 2)
-                    for (size_t c = 0; c < C; c++) // For each input channel
+                    if (hardware_enabled) {
+                        mac_pairs.clear();
+                    }
+                    
+                    // Progress Indicator
+                    // static int progress_cnt = 0;
+                    // if (++progress_cnt % 2000 == 0) {
+                    //     std::cout << "." << std::flush;
+                    // }
+                    
+                    for (size_t c = 0; c < C; c++)     // For each input channel
                     {
                         for (size_t r = 0; r < R; r++) // For each kernel row
                         {
                             for (size_t s = 0; s < S; s++) // For each kernel column
                             {
-                                // Calculate input coordinates (SAME as Lab 2)
                                 size_t input_h = U * p + r;
                                 size_t input_w = U * q + s;
-
-                                // Calculate array indices (SAME as Lab 2)
+                                
                                 size_t input_idx = input_h * W * C + input_w * C + c;
                                 size_t weight_idx = r * S * C * M + s * C * M + c * M + m;
-
-                                // ==============================================
-                                // KEY DIFFERENCE: int8 MAC instead of fp32 MAC
-                                // ==============================================
-                                // Lab 2: result += fp32_input * fp32_weight
-                                // Lab 3: accumulator += int8_input * int8_weight
-                                //
-                                // This is what the hardware accelerates!
-                                // int8 multiply is ~4x faster than fp32 multiply
-                                // ==============================================
-
-                                // Get pre-quantized values (already int8)
+                                
                                 i8 input_val = quantized_input[input_idx];
                                 i8 weight_val = quantized_weights[weight_idx];
-
-                                // Multiply two int8 values -> produces int16 result
-                                // But we accumulate in int32 to prevent overflow
-                                // (many additions could overflow int16)
-                                accumulator += static_cast<i32>(input_val) *
-                                               static_cast<i32>(weight_val);
+                                
+                                if (hardware_enabled) {
+                                    mac_pairs.push_back(packMacOperands(weight_val, input_val));
+                                } else {
+                                    accumulator += static_cast<i32>(input_val) *
+                                                   static_cast<i32>(weight_val);
+                                }
                             }
                         }
                     }
-
+                    
+                    if (hardware_enabled && !mac_pairs.empty()) {
+                        const i32 mac_sum =
+                            HardwareMac::run(mac_pairs.data(), mac_pairs.size());
+                        accumulator += mac_sum;  // Add to existing bias, don't replace
+                    }
+                    
                     // ==========================================================
-                    // SECTION 8: DEQUANTIZE BACK TO FP32
+                    // SECTION 8: DEQUANTIZE BACK TO FP32  
                     // ==========================================================
                     // Using calibrated quantization parameters for more accurate results
                     //
@@ -740,69 +678,62 @@ namespace ML
                     // The zi*Sw*Σ(Wx) term is an unwanted offset that accumulated
                     // We need to remove it before dequantizing
                     // ==========================================================
-
+                    
                     // STEP 1: Calculate sum of all quantized weights used for this output
                     i32 weight_sum = 0;
-                    for (size_t c = 0; c < C; c++)
-                    {
-                        for (size_t r = 0; r < R; r++)
-                        {
-                            for (size_t s = 0; s < S; s++)
-                            {
+                    for (size_t c = 0; c < C; c++) {
+                        for (size_t r = 0; r < R; r++) {
+                            for (size_t s = 0; s < S; s++) {
                                 size_t weight_idx = r * S * C * M + s * C * M + c * M + m;
                                 weight_sum += static_cast<i32>(quantized_weights[weight_idx]);
                             }
                         }
                     }
-
+                    
                     // STEP 2: Calculate the zero-point offset that accumulated
                     i32 zero_point_offset = static_cast<i32>(zi) * weight_sum;
-
+                    
                     // STEP 3: Remove offset and dequantize using calibrated parameters
                     fp32 result = static_cast<fp32>(accumulator - zero_point_offset) / (Si * Sw);
-
+                    
                     // ==========================================================
                     // SECTION 9: APPLY ReLU ACTIVATION (In FP32 space!)
                     // ==========================================================
                     result = std::max(0.0f, result);
-
+                    
                     // Store result in output array
                     size_t output_idx = p * Q * M + q * M + m;
                     getOutputData().get<fp32>(output_idx) = result;
                 }
             }
         }
-
+        
         // ==========================================================================
         // DEBUG OUTPUT: Verify calibrated quantization worked correctly
         // ==========================================================================
         size_t output_size = P * Q * M;
         fp32 output_min = getOutputData().get<fp32>(0);
         fp32 output_max = getOutputData().get<fp32>(0);
-        fp32 output_avg = 0.0f;
-        size_t zero_count = 0;
-
-        for (size_t i = 0; i < output_size; i++)
-        {
+        // fp32 output_avg = 0.0f;
+        // size_t zero_count = 0;
+        
+        for (size_t i = 0; i < output_size; i++) {
             fp32 val = getOutputData().get<fp32>(i);
-            output_avg += val;
-            if (val < output_min)
-                output_min = val;
-            if (val > output_max)
-                output_max = val;
-            if (val == 0.0f)
-                zero_count++;
+            // output_avg += val;
+            if (val < output_min) output_min = val;
+            if (val > output_max) output_max = val;
+            // if (val == 0.0f) zero_count++;
         }
-        output_avg /= output_size;
-
+        // output_avg /= output_size;
+        
         logInfo("Layer " + current_layer_name + " quantized convolution complete\n"); // Extra newline for readability
-        logDebug("Output statistics - Min: " + std::to_string(output_min) +
-                 ", Max: " + std::to_string(output_max) +
-                 ", Avg: " + std::to_string(output_avg));
-        logDebug("Zero outputs: " + std::to_string(zero_count) + "/" + std::to_string(output_size) +
-                 " (" + std::to_string(100.0f * zero_count / output_size) + "%)");
+        // logDebug("Output statistics - Min: " + std::to_string(output_min) + 
+        //         ", Max: " + std::to_string(output_max) + 
+        //         ", Avg: " + std::to_string(output_avg));
+        // logDebug("Zero outputs: " + std::to_string(zero_count) + "/" + std::to_string(output_size) + 
+        //         " (" + std::to_string(100.0f * zero_count / output_size) + "%)");
     }
-
+    
     // ==========================================================================
     // SUMMARY OF KEY CHANGES - CALIBRATED QUANTIZATION:
     // ==========================================================================
@@ -829,183 +760,30 @@ namespace ML
     // ==========================================================================
     // UTILITY FUNCTIONS FOR CALIBRATED QUANTIZATION
     // ==========================================================================
-
+    
     // Reset the layer counter (call this at the start of each inference)
-    void resetConvLayerCounter()
-    {
+    void resetConvLayerCounter() {
         conv_layer_count = 0;
     }
-
+    
     // Get current layer counter value (for debugging)
-    int getCurrentConvLayerCount()
-    {
+    int getCurrentConvLayerCount() {
         return conv_layer_count;
     }
-
+    
     // Enable layer-specific calibration for full inference chains
-    void enableLayerSpecificCalibration(bool enable)
-    {
+    void enableLayerSpecificCalibration(bool enable) {
         use_layer_specific_calibration = enable;
-        if (enable)
-        {
+        if (enable) {
             logInfo("Enabled layer-specific calibration for full inference chains");
-        }
-        else
-        {
+        } else {
             logInfo("Using raw input calibration for all layers (individual layer test mode)");
         }
     }
-
+    
     // Check if layer-specific calibration is enabled
-    bool isLayerSpecificCalibrationEnabled()
-    {
+    bool isLayerSpecificCalibrationEnabled() {
         return use_layer_specific_calibration;
-    }
-
-    // ==========================================================================
-    // ACCELERATED INFERENCE
-    // ==========================================================================
-    void ConvolutionalLayer::computeAccelerated(const LayerData &dataIn) const
-    {
-#ifdef ZEDBOARD
-        // Check calibration
-        if (!calibration_loaded)
-        {
-            logError("Calibration data not loaded for Accelerated Inference");
-            return;
-        }
-
-        const LayerParams &inParam = getInputParams();
-        const LayerParams &outParam = getOutputParams();
-        const LayerParams &weightParam = getWeightParams();
-        const LayerParams &biasParam = getBiasParams();
-
-        // Determine input calibration key
-        std::string keyName;
-        int current_count = getCurrentConvLayerCount();
-        if (current_count == 0)
-            keyName = "_input";
-        else if (current_count == 1)
-            keyName = "conv2d";
-        else
-            keyName = "conv2d_" + std::to_string(current_count - 1);
-
-        float input_min = -1.0f, input_max = 1.0f;
-        if (calibration_data.count(keyName))
-        {
-            input_min = calibration_data[keyName].min;
-            input_max = calibration_data[keyName].max;
-        }
-
-        // Calculate Input Quantization Parameters
-        float input_range = input_max - input_min;
-        if (input_range < 1e-6f)
-            input_range = 1e-6f;
-        float Si = input_range / (QUANT_MAX - QUANT_MIN);
-        int8_t zi = static_cast<int8_t>(std::round(QUANT_MIN - (input_min / Si)));
-
-        // Quantize Input
-        std::vector<int8_t> input_q(inParam.flat_count());
-        for (size_t i = 0; i < inParam.flat_count(); i++)
-        {
-            input_q[i] = quantizeFloat(dataIn.get<fp32>(i), Si, zi);
-        }
-
-        // Quantize Weights (On the fly)
-        float w_min = std::numeric_limits<float>::max();
-        float w_max = std::numeric_limits<float>::lowest();
-        for (size_t i = 0; i < weightParam.flat_count(); i++)
-        {
-            float val = weightData.get<fp32>(i);
-            if (val < w_min)
-                w_min = val;
-            if (val > w_max)
-                w_max = val;
-        }
-        float w_abs = std::max(std::abs(w_min), std::abs(w_max));
-        float Sw = w_abs / QUANT_MAX;
-
-        std::vector<int8_t> weight_q(weightParam.flat_count());
-        for (size_t i = 0; i < weightParam.flat_count(); i++)
-        {
-            int32_t val = std::round(weightData.get<fp32>(i) / Sw);
-            val = std::max((int32_t)QUANT_MIN, std::min((int32_t)QUANT_MAX, val));
-            weight_q[i] = (int8_t)val;
-        }
-
-        // Calculate Bias Scale
-        float Sb = Si * Sw;
-        std::vector<int32_t> bias_q(biasParam.flat_count());
-        for (size_t i = 0; i < biasParam.flat_count(); i++)
-        {
-            bias_q[i] = std::round(biasData.get<fp32>(i) / Sb);
-        }
-
-        // Hardware Dimensions
-        size_t H_in = inParam.dims[0];
-        size_t W_in = inParam.dims[1];
-        size_t C_in = inParam.dims[2];
-
-        size_t H_out = outParam.dims[0];
-        size_t W_out = outParam.dims[1];
-        size_t C_out = outParam.dims[2];
-
-        size_t K_h = weightParam.dims[0];
-        size_t K_w = weightParam.dims[1];
-
-        // Output Accumulator
-        std::vector<int32_t> output_acc(outParam.flat_count(), 0);
-
-        // Hardware Execution Loop
-        for (size_t f = 0; f < C_out; f++)
-        {
-            for (size_t h = 0; h < H_out; h++)
-            {
-                for (size_t w = 0; w < W_out; w++)
-                {
-                    int packet_len = K_h * K_w * C_in;
-                    Xil_Out32(FIFO_BASE_ADDR + XLLF_TLF_OFFSET, packet_len * 4);
-
-                    for (size_t kh = 0; kh < K_h; kh++)
-                    {
-                        for (size_t kw = 0; kw < K_w; kw++)
-                        {
-                            for (size_t c = 0; c < C_in; c++)
-                            {
-                                int8_t act = input_q[(h + kh) * W_in * C_in + (w + kw) * C_in + c];
-                                int8_t weight = weight_q[kh * K_w * C_in * C_out + kw * C_in * C_out + c * C_out + f];
-                                uint32_t packed = ((uint32_t)(weight & 0xFF) << 8) | ((uint32_t)(act & 0xFF));
-                                Xil_Out32(FIFO_BASE_ADDR + XLLF_TDFD_OFFSET, packed);
-                            }
-                        }
-                    }
-
-                    while (Xil_In32(FIFO_BASE_ADDR + XLLF_RDFO_OFFSET) == 0);
-                    uint32_t rx_len = Xil_In32(FIFO_BASE_ADDR + XIL_RLF_OFFSET);
-                    int32_t mac_result = (int32_t)Xil_In32(FIFO_BASE_ADDR + XLLF_RDFD_OFFSET);
-
-                    // Add bias and store
-                    output_acc[h * W_out * C_out + w * C_out + f] = mac_result + bias_q[f];
-                }
-            }
-        }
-
-        // Dequantize and Store Output
-        float *outIdx = (float *)getOutputData().raw();
-        for (size_t i = 0; i < outParam.flat_count(); i++)
-        {
-            float val = (float)output_acc[i] * Sb;
-            // ReLU
-            if (val < 0) val = 0;
-            outIdx[i] = val;
-        }
-
-        // Increment Layer Counter
-        conv_layer_count++;
-#else
-        logError("computeAccelerated called but ZEDBOARD not defined. Falling back to Naive.");
-        computeNaive(dataIn);
-#endif
     }
 
 } // namespace ML
